@@ -28,8 +28,16 @@ http.createServer(function (req, res) {
       res.end();
     });
   } else {
-    fs.readFile(__dirname + '/public/index.html', function (err, data) {
-      if (err) console.log(err);
+	  console.log("test"+req.url.split('/')[1]) 
+	  var name = "index";
+	  if(req.url.split('/')[1] != null || req.url.split('/')[1] != undefined){
+		  name = req.url.split('/')[1];
+
+	  }
+	  fs.readFile(__dirname + '/public/' + name +'.html', 
+    		function (err, data) {
+      
+    	if (err) console.log(err);
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(data);
       res.end();

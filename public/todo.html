@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TO DO list</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.get({url: "https://2wkd4y5pw9.execute-api.us-east-2.amazonaws.com/Prod/", success: function(result){
+           var list = document.createElement("ol");
+$.each(result,function(name,element){
+               // console.log("arrya" + name + element)
+                list.append( element);
+                });
+                $("#div1").append(list);
+        }});
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>To do list</h2></div>
+
+<div>
+<button> Click to get todo list for today</button>
+</div>
+
+</body>
+</html>
